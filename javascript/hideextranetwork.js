@@ -102,10 +102,10 @@ function hideExtraNetwork(keywords) {
                 try {
                     keywords.forEach(keyword => {
                         if (onclickAttribute && onclickAttribute.toLowerCase().includes(keyword.toLowerCase())) {
-                            card.classList.add('!hidden');
+                            card.classList.add('hideextranetwork');
                             throw {};
                         } else {
-                            card.classList.remove('!hidden');
+                            card.classList.remove('hideextranetwork');
                         }
                     });
                 } catch {}
@@ -127,4 +127,14 @@ onUiUpdate(async () => {
     waiting = false;
 
     hideExtraNetwork(hideKeywords);
+
+    var styles = `
+        .extra-network-cards .hideextranetwork{
+            display: none !important;
+        }
+    `
+
+    var styleSheet = document.createElement("style")
+    styleSheet.innerText = styles
+    document.head.appendChild(styleSheet)
 });
